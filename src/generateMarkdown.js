@@ -16,7 +16,9 @@ function renderLicenseSection(license) {}
 
 // `;
 // }
-const generateMarkdown = (name, github) => {
+
+module.exports = (generateMarkdown) => {
+  console.log(generateMarkdown);
   return `
     <!DOCTYPE html> 
     <html lang="en"> 
@@ -28,10 +30,11 @@ const generateMarkdown = (name, github) => {
     </head>
   
     <body>
-      <h1>${name}</h1>
-      <h2><a href="https://github.com/${github}">Github</a></h2>
+      <h1>${generateMarkdown.name}</h1>
+      <h2><a href="https://github.com/${generateMarkdown.github}">Github</a></h2>
     </body>
     </html>
     `;
 };
-module.exports = generateMarkdown;
+
+//module.exports = generateMarkdown;

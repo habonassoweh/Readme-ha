@@ -1,14 +1,12 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
+const fs = require("fs");
 const generateMarkdown = require("../readme-ha/src/generateMarkdown");
 
-// const fs = require("fs");
-// const generateMarkdown = require("../readme-ha/src/generateMarkdown");
-
-// const pageHTML = generateMarkdown(name, github);
+//const pageHTML = generateMarkdown(name, github);
 
 // TODO: Create an array of questions for user input
-const promptQuestions = () => {
+const questions = () => {
   return inquirer.prompt([
     {
       type: "input",
@@ -64,12 +62,20 @@ const promptQuestions = () => {
       type: "list",
       name: "What license is being used?",
       message:
-        "What license did you use for this project? (Check all that apply)",
+        "What license did you use for this project with? (Check all that apply)",
       choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
     },
   ]);
 };
-promptQuestions().then((answers) => console.log(answers));
+questions().then((answers) => {
+  const pageHTML = generateMarkdown();
+
+  // fs.writeFile('./index.html', pageHTML, err => {
+  //   if (err) throw new Error(err);
+
+  //   console.log('Page created! Check out index.html in this directory to see it!');
+  // });
+});
 
 // TODO: Create a function to write README file
 // fs.writeFile("index.html", generateMarkdown(name, github), (err) => {
@@ -79,12 +85,7 @@ promptQuestions().then((answers) => console.log(answers));
 // });
 
 // TODO: Create a function to initialize app
-// function init() {
-//   inquirer.prompt(promptQuestions).then(function (data) {
-//     writeFile("Readme.md", generateMarkdown(data));
-//     console.log(data);
-//   });
-// }
+function init() {}
 
 // Function call to initialize app
 init();
